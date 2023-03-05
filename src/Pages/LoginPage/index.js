@@ -1,5 +1,7 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import logoLabeddit from "../../assets/logo-labeddit.svg";
+import { goToFeed, goToSignup } from "../../Router/coordinator";
 import {
   Logo,
   FormContainer,
@@ -11,6 +13,9 @@ import {
 } from "./LoginPageStyled";
 
 export const LoginPage = () => {
+  
+  const navigate = useNavigate();
+
   return (
     <>
       <Logo>
@@ -22,9 +27,9 @@ export const LoginPage = () => {
         <Input name="email" placeholder="E-mail" type="email" />
         <Input name="password" placeholder="Senha" type="password" />
         <BoxButton>
-          <Button type="submit">Continuar</Button>
+          <Button onClick={() => goToFeed(navigate)}>Continuar</Button>
           <Line></Line>
-          <ButtonSignup>Crie uma conta!</ButtonSignup>
+          <ButtonSignup onClick={() => goToSignup(navigate)}> Crie uma conta!</ButtonSignup>
         </BoxButton>
       </FormContainer>
     </>
