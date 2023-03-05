@@ -1,3 +1,3 @@
-export * from "./feed";
-export * from "./login";
-export * from "./signup";
+export * from "./FeedPage";
+export * from "./LoginPage";
+export * from "./SignupPage";
