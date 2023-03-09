@@ -8,24 +8,13 @@ export const Container = styled.div`
 `;
 
 export const PostBox = styled.div`
+  margin-top: 0.563rem;
   margin-top: 1.625rem;
   width: 22.75rem;
   height: 10.438rem;
   border-radius: 12px;
   background-color: #fbfbfb;
   border: 0.1rem solid #e0e0e0;
-
-  span {
-    padding-left: 0.625rem;
-    padding-top: 0.563rem;
-    font-size: 0.75rem;
-
-    font-family: "IBM Plex Sans";
-    font-style: normal;
-    font-weight: 400;
-    text-align: center;
-    color: #6f6f6f;
-  }
 
   p {
     padding: 0.625rem;
@@ -36,6 +25,16 @@ export const PostBox = styled.div`
   }
 `;
 
+export const UserSubmitted = styled.span`
+  padding-left: 0.625rem;
+  margin-top: 0.563rem !important;
+  font-size: 0.75rem;
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  color: #6f6f6f;
+`;
+
 export const BoxButton = styled.div`
   margin-left: 0.625rem;
   width: 10.896rem;
@@ -43,6 +42,7 @@ export const BoxButton = styled.div`
   display: flex;
   align-items: center;
   column-gap: 0.688rem;
+  margin-top: 1.125rem;
 `;
 
 export const ButtonLikeDislike = styled.button`
