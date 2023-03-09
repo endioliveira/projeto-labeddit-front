@@ -10,7 +10,7 @@ export const Title = styled.h2`
   color: #373737;
 `;
 
-export const Form = styled.div`
+export const Form = styled.form`
   margin-top: 6.6875rem;
   display: flex;
   flex-direction: column;

@@ -1,8 +1,9 @@
-import React from "react";
-import { Comments } from "../Comments/index"
+import React, { useState } from "react";
+import { CreateComment } from "../CreateComment/index";
 import {
   Container,
   PostBox,
+  UserSubmitted,
   BoxButton,
   ButtonLikeDislike,
   ButtonComment,
@@ -12,29 +13,31 @@ import iconDislike from "../../assets/icon-dislike.svg";
 import iconComment from "../../assets/icon-comment.svg";
 
 export const Posts = () => {
+  const [like, setLike] = useState(0);
+  const [comments, setComments] = useState(false);
+
   return (
     <Container>
       <PostBox>
-        <span>Enviado por: labaluno83</span>
+        <UserSubmitted>Enviado por: labaluno83</UserSubmitted>
         <p>
           Porque a maioria dos desenvolvedores usam Linux? ou as empresas de
           tecnologia usam Linux ?
         </p>
 
         <BoxButton>
-          <ButtonLikeDislike>
+          <ButtonLikeDislike onClick={() => setLike(!like)}>
             <img src={iconLike} alt="Botão de Like" />
-            1.2K
+            {like ? 0 : 1}
             <img src={iconDislike} alt="Botão de Dislike" />
           </ButtonLikeDislike>
-          <ButtonComment>
+          <ButtonComment onClick={() => setComments(!comments)}>
             <img src={iconComment} alt="Botão de Comentário" />
             132
           </ButtonComment>
         </BoxButton>
       </PostBox>
-
-      <Comments/>
+      {comments ? false : <CreateComment />}
     </Container>
   );
 };

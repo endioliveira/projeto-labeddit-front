@@ -8,63 +8,66 @@ export const Container = styled.div`
 `;
 
 export const BoxComments = styled.div`
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const TextArea = styled.textarea`
-  padding-left: 1.063rem;
-  padding-top: 1.125rem;
+  margin-top: 0.563rem;
+  margin-top: 1.625rem;
   width: 22.75rem;
-  height: 8.188rem;
-  resize: none;
+  height: 10.438rem;
   border-radius: 12px;
-  background-color: #ededed;
-  color: #6f6f6f;
-  font-size: 1.3rem;
-  border: none;
+  background-color: #fbfbfb;
+  border: 0.1rem solid #e0e0e0;
+
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+
+  span {
+    font-family: "IBM Plex Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #6f6f6f;
+
+    padding-left: 0.625rem;
+    margin-top: 0.563rem !important;
+  }
+
+  p {
+    padding: 0.625rem;
+    font-family: "IBM Plex Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+
+    color: #000000;
+  }
 `;
 
-export const BoxButton = styled.div`
-  margin-top: 1.3rem;
+export const LikeOrDislike = styled.div`
+  border-radius: 28px;
+  border: 1px solid #DFDFDF;
   display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-`;
-
-export const Button = styled.button`
-  border-radius: 12px;
-  width: 22.8125rem;
-  height: 3.1875rem;
-  background: rgb(255, 106, 128);
-  background: linear-gradient(
-    41deg,
-    rgba(255, 106, 128, 1) 0%,
-    rgba(250, 171, 84, 1) 100%
-  );
-  color: #ffffff;
+  align-items: center;
+  justify-content: space-around;
+  width: 6.125rem;
+  height: 1.7431rem;
 
   font-family: "IBM Plex Sans";
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 23px;
-  border: none;
+  font-size: 9.56098px;
+  text-align: center;
 
+  color: #6f6f6f;
 `;
 
-export const Line = styled.div`
-  margin-top: 2rem;
-  width: 22.688rem;
-  height: 1px;
-  background: rgb(255, 106, 128);
-  background: linear-gradient(
-    41deg,
-    rgba(255, 106, 128, 1) 0%,
-    rgba(250, 171, 84, 1) 100%
-  );
-  opacity: .9;
+export const Like = styled.button`
+  border: none;
+  background-color: #fbfbfb;
+`;
+
+export const Dislike = styled.button`
+  border: none;
+  background-color: #fbfbfb;
 `;
