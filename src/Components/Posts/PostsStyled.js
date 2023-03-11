@@ -78,3 +78,14 @@ export const ButtonComment = styled.button`
   justify-content: space-around;
   align-items: center;
 `;
+
+export const Like = styled.button`
+  border: none;
+  background-color: #fbfbfb;
+`;
+
+export const Dislike = styled.button`
+  border: none;
+  background-color: #fbfbfb;
+`;
+

@@ -5,8 +5,10 @@ import {
   PostBox,
   UserSubmitted,
   BoxButton,
-  ButtonLikeDislike,
+  Like,
+  Dislike,
   ButtonComment,
+  ButtonLikeDislike,
 } from "./PostsStyled";
 import iconLike from "../../assets/icon-like.svg";
 import iconDislike from "../../assets/icon-dislike.svg";
@@ -26,11 +28,16 @@ export const Posts = () => {
         </p>
 
         <BoxButton>
-          <ButtonLikeDislike onClick={() => setLike(!like)}>
-            <img src={iconLike} alt="Botão de Like" />
+          <ButtonLikeDislike>
+            <Like onClick={() => setLike(!like)}>
+              <img src={iconLike} alt="Botão de Like" />
+            </Like>
             {like ? 0 : 1}
-            <img src={iconDislike} alt="Botão de Dislike" />
+            <Dislike>
+              <img src={iconDislike} alt="Botão de Dislike" />
+            </Dislike>
           </ButtonLikeDislike>
+         
           <ButtonComment onClick={() => setComments(!comments)}>
             <img src={iconComment} alt="Botão de Comentário" />
             132
