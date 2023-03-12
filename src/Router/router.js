@@ -10,7 +10,7 @@ export const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginPage/>} />
+        <Route path="/login" element={<LoginPage/>} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/feed" element={<FeedPage />} />
         <Route exact path="/feed" element={<Private Item={<FeedPage/>} />} />

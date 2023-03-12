@@ -14,25 +14,25 @@ import iconLike from "../../assets/icon-like.svg";
 import iconDislike from "../../assets/icon-dislike.svg";
 import iconComment from "../../assets/icon-comment.svg";
 
-export const Posts = () => {
-  const [like, setLike] = useState(0);
+export const Posts = ({post}) => {
+  
+  // const [like, setLike] = useState(0);
   const [comments, setComments] = useState(false);
 
   return (
     <Container>
       <PostBox>
-        <UserSubmitted>Enviado por: labaluno83</UserSubmitted>
+        <UserSubmitted>Enviado por: {post.creator.nickname}</UserSubmitted>
         <p>
-          Porque a maioria dos desenvolvedores usam Linux? ou as empresas de
-          tecnologia usam Linux ?
+        {post.content}
         </p>
 
         <BoxButton>
           <ButtonLikeDislike>
-            <Like onClick={() => setLike(!like)}>
+            <Like>
               <img src={iconLike} alt="Botão de Like" />
             </Like>
-            {like ? 0 : 1}
+            {post.likes}
             <Dislike>
               <img src={iconDislike} alt="Botão de Dislike" />
             </Dislike>

@@ -6,7 +6,6 @@ export const useForm = (initialState) => {
   const onChangeForm = (event) => {
     const newForm = { ...form };
     newForm[event.target.name] = event.target.value;
-
     setForm(newForm);
   };
   return [form, onChangeForm];
