@@ -12,6 +12,7 @@ import {
   ButtonSignup,
   Line,
 } from "./LoginPageStyled";
+import api from "../../services/api";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -20,8 +21,25 @@ export const LoginPage = () => {
     password: "",
   });
 
-  const login = (e) => {
+  const login = async (e) => {
     e.preventDefault();
+
+    const body = {
+      email: form.email,
+      password: form.password,
+    };
+
+    await api
+      .login(body)
+      .then((response) => {
+        window.localStorage.setItem("labeddit-token", response.data.token);
+        goToFeed(navigate)
+      })
+      .catch((error) => {
+        console.error(error?.response?.data);
+        window.alert(error?.response?.data)
+      });
+
   };
 
   return (
@@ -49,7 +67,7 @@ export const LoginPage = () => {
           onChange={changeForm}
         />
         <BoxButton>
-          <Button onClick={() => goToFeed(navigate)}>Continuar</Button>
+          <Button type="submit">Continuar</Button>
           <Line></Line>
           <ButtonSignup onClick={() => goToSignup(navigate)}>
             {" "}

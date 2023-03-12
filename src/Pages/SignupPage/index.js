@@ -8,15 +8,19 @@ import {
 } from "./SignupPageStyled";
 import { Header } from "../../Components/Header";
 import { useForm } from "../../hooks/useForm";
+import { goToFeed } from "../../Router/coordinator";
+import { useNavigate } from "react-router-dom";
+import api from "../../services/api";
 
 export const SignupPage = () => {
+  const navigate = useNavigate();
   const [form, onChangeForm] = useForm({
     nickname: "",
     email: "",
     password: "",
   });
 
-  const signup = (event) => {
+  const signup = async (event) => {
     event.preventDefault();
     console.log(form);
 
@@ -26,7 +30,15 @@ export const SignupPage = () => {
       password: form.password,
     };
 
-    console.log(body);
+    await api.signupApi(body).then((response) => {
+          window.localStorage.setItem("labeddit-token", response.data.token)
+          goToFeed(navigate)
+
+    }).catch((error) => {
+          console.error(error?.response?.data)
+          window.alert(error?.response?.data)
+
+    })
   };
 
   return (
@@ -92,7 +104,7 @@ export const SignupPage = () => {
         </BoxParagraph>
 
         <BoxButton>
-          <Button>Cadastrar</Button>
+          <Button type="submit">Cadastrar</Button>
         </BoxButton>
       </Form>
     </>
