@@ -53,7 +53,7 @@ export const Button = styled.button`
   font-size: 18px;
   line-height: 23px;
   border: none;
-
+  cursor: pointer;
 `;
 
 export const Line = styled.div`

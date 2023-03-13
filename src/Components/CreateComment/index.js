@@ -7,7 +7,6 @@ export const CreateComment = () => {
       <Container>
         <BoxCreateComments>
             <TextArea id="comment" name="comment" >
-            Escreva seu post...
             </TextArea>
 
             <BoxButton>

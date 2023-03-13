@@ -1,10 +1,15 @@
-import React, { useContext, useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import { CreatePost, Header, Posts } from "../../Components";
 import api from "../../services/api"
+import {PostsContext} from "../../context/PostsContext"
 
 export const FeedPage = () => {
 
   const [posts, setPosts] = useState([])
+
+  const context = {
+    posts, setPosts
+  }
 
   useEffect(() => {
    api.get("/posts")
@@ -19,10 +24,12 @@ export const FeedPage = () => {
   return (
     <>
       <Header />
+      <PostsContext.Provider value={context}>
       <CreatePost/>
-      {posts.map((post) => {
+      {context.posts.map((post) => {
         return <Posts key={post.id} post={post}/> 
       })}
+      </PostsContext.Provider>
     </>
   );
 };
