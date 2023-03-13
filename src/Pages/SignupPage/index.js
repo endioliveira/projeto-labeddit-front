@@ -56,7 +56,7 @@ export const SignupPage = () => {
           title="é preciso que o apelido tenha pelo menos 4 letras"
           id="nickname"
           name="nickname"
-          defaultValue={form.nickname}
+          value={form.nickname}
           onChange={onChangeForm}
           required
         />
@@ -68,7 +68,7 @@ export const SignupPage = () => {
           title="envie o email no formato email@email.com"
           id="email"
           name="email"
-          defaultValue={form.email}
+          value={form.email}
           onChange={onChangeForm}
           required
         />

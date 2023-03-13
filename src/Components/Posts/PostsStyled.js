@@ -8,26 +8,23 @@ export const Container = styled.div`
 `;
 
 export const PostBox = styled.div`
-  margin-top: 0.563rem;
   margin-top: 1.625rem;
+  padding: 0.625rem;
   width: 22.75rem;
-  height: 10.438rem;
   border-radius: 12px;
   background-color: #fbfbfb;
   border: 0.1rem solid #e0e0e0;
 
   p {
-    padding: 0.625rem;
     font-size: 1.125rem;
     font-family: "IBM Plex Sans";
     font-style: normal;
     font-weight: 400;
+    margin: 1.125rem 0;
   }
 `;
 
 export const UserSubmitted = styled.span`
-  padding-left: 0.625rem;
-  margin-top: 0.563rem !important;
   font-size: 0.75rem;
   font-family: "IBM Plex Sans";
   font-style: normal;
@@ -36,16 +33,14 @@ export const UserSubmitted = styled.span`
 `;
 
 export const BoxButton = styled.div`
-  margin-left: 0.625rem;
   width: 10.896rem;
   height: 1.75rem;
   display: flex;
   align-items: center;
   column-gap: 0.688rem;
-  margin-top: 1.125rem;
 `;
 
-export const ButtonLikeDislike = styled.button`
+export const ButtonLikeDislike = styled.div`
   width: 6.125rem;
   height: 1.743rem;
   background-color: #fbfbfb;
@@ -82,10 +77,19 @@ export const ButtonComment = styled.button`
 export const Like = styled.button`
   border: none;
   background-color: #fbfbfb;
+  cursor: pointer;
+
+  svg:hover path {
+    fill: #b3ffae;
+  }
 `;
 
 export const Dislike = styled.button`
   border: none;
   background-color: #fbfbfb;
-`;
+  cursor: pointer;
 
+  svg:hover path {
+    fill: #ff6464;
+  }
+`;

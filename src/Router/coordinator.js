@@ -9,3 +9,6 @@ export const goToSignup = (navigator) => {
 export const goToFeed = (navigator) => {
     navigator("/feed");
 }
+export const goToPostById = (navigator) => {
+    navigator("/feed/post/:id");
+}
