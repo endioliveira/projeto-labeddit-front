@@ -52,26 +52,38 @@ export const ButtonLikeDislike = styled.div`
   font-weight: 700;
   font-size: 0.598rem;
   text-align: center;
+  padding: 0.292rem;
 
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  gap: 0.995rem;
+
 `;
 export const ButtonComment = styled.button`
-  width: 4.083rem;
+ width: 6.125rem;
   height: 1.743rem;
-
-  color: #7f7f7f;
   background-color: #fbfbfb;
   border: 0.1rem solid #ececec;
   border-radius: 28px;
+  color: #7f7f7f;
   font-family: "IBM Plex Sans";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 0.598rem;
+  text-align: center;
+  padding: 0.292rem;
+  cursor: pointer;
+
+
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  gap: 0.995rem;
+
+  svg:hover path {
+    fill: #62CDFF;
+  }
 `;
 
 export const Like = styled.button`
@@ -85,6 +97,7 @@ export const Like = styled.button`
 `;
 
 export const Dislike = styled.button`
+  padding-top: 0.2rem;
   border: none;
   background-color: #fbfbfb;
   cursor: pointer;
@@ -92,4 +105,6 @@ export const Dislike = styled.button`
   svg:hover path {
     fill: #ff6464;
   }
+
+
 `;

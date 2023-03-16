@@ -26,7 +26,9 @@ export const TextArea = styled.textarea`
   color: #6f6f6f;
   font-size: 1.3rem;
   border: none;
-
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
 `;
 
 export const BoxButton = styled.div`

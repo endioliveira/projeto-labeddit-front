@@ -24,8 +24,11 @@ export const TextArea = styled.textarea`
   border-radius: 12px;
   background-color: #ededed;
   color: #6f6f6f;
-  font-size: 1.3rem;
   border: none;
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.3rem;  
 `;
 
 export const BoxButton = styled.div`
@@ -66,5 +69,5 @@ export const Line = styled.div`
     rgba(255, 106, 128, 1) 0%,
     rgba(250, 171, 84, 1) 100%
   );
-  opacity: .9;
+  opacity: 0.9;
 `;

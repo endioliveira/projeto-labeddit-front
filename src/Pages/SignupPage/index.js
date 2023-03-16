@@ -1,3 +1,8 @@
+import { useNavigate } from "react-router-dom";
+import api from "../../services/api";
+import { useForm } from "../../hooks/useForm";
+import { goToFeed } from "../../Router/coordinator";
+import { Header } from "../../Components/Header";
 import {
   BoxButton,
   Form,
@@ -6,14 +11,11 @@ import {
   Title,
   BoxParagraph,
 } from "./SignupPageStyled";
-import { Header } from "../../Components/Header";
-import { useForm } from "../../hooks/useForm";
-import { goToFeed } from "../../Router/coordinator";
-import { useNavigate } from "react-router-dom";
-import api from "../../services/api";
 
 export const SignupPage = () => {
+
   const navigate = useNavigate();
+
   const [form, onChangeForm] = useForm({
     nickname: "",
     email: "",
@@ -30,15 +32,16 @@ export const SignupPage = () => {
       password: form.password,
     };
 
-    await api.signupApi(body).then((response) => {
-          window.localStorage.setItem("labeddit-token", response.data.token)
-          goToFeed(navigate)
-
-    }).catch((error) => {
-          console.error(error?.response?.data)
-          window.alert(error?.response?.data)
-
-    })
+    await api
+      .signupApi(body)
+      .then((response) => {
+        window.localStorage.setItem("labeddit-token", response.data.token);
+        goToFeed(navigate);
+      })
+      .catch((error) => {
+        console.error(error?.response?.data);
+        window.alert(error?.response?.data);
+      });
   };
 
   return (
