@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Header } from "../../Components"
+import { useParams } from "react-router-dom";
 import api from "../../services/api";
 import { PostsContext } from "../../context/PostsContext";
-import { useParams } from "react-router";
-import {Posts} from "../../Components/Posts"
+import { Comments, CreateComment, Header } from "../../Components";
+import { Posts } from "../../Components/Posts";
 
 export const PostPage = () => {
   const pathParams = useParams();
+
   const [post, setPost] = useState([]);
 
   const context = {
@@ -15,7 +16,7 @@ export const PostPage = () => {
   };
 
   useEffect(() => {
-    api
+     api
       .get(`/posts/${pathParams.id}`)
       .then((response) => {
         setPost(response.data);
@@ -25,12 +26,18 @@ export const PostPage = () => {
         window.alert(error?.response?.data);
       });
   }, []);
-
+  
   return (
     <>
       <Header />
       <PostsContext.Provider value={context}>
-        <Posts post={post}/>
+        <Posts post={context.post} />
+        <CreateComment />
+        
+        {context.post.post_comments ? post.post_comments.map((comment)=>{
+          return <Comments key={comment.id} comment={comment}/>
+        }) : <p>carregando</p>} 
+        
       </PostsContext.Provider>
     </>
   );

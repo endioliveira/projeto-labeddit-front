@@ -1,4 +1,6 @@
 import React, { useContext, useState } from "react";
+import api from "../../services/api";
+import { PostsContext } from "../../context/PostsContext";
 import {
   Container,
   TextArea,
@@ -7,8 +9,6 @@ import {
   Button,
   Line,
 } from "./CreatePostStyled";
-import api from "../../services/api";
-import { PostsContext } from "../../context/PostsContext";
 
 export const CreatePost = () => {
   const [content, setContent] = useState("");

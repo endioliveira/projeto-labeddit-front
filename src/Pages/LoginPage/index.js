@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import logoLabeddit from "../../assets/logo-labeddit.svg";
 import { goToFeed, goToSignup } from "../../Router/coordinator";
+import api from "../../services/api";
+import logoLabeddit from "../../assets/logo-labeddit.svg";
 import {
   Logo,
   FormContainer,
@@ -12,10 +13,12 @@ import {
   ButtonSignup,
   Line,
 } from "./LoginPageStyled";
-import api from "../../services/api";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false);
+
   const [form, changeForm] = useForm({
     email: "",
     password: "",
@@ -33,39 +36,45 @@ export const LoginPage = () => {
       .login(body)
       .then((response) => {
         window.localStorage.setItem("labeddit-token", response.data.token);
-        goToFeed(navigate)
+        goToFeed(navigate);
       })
       .catch((error) => {
         console.error(error?.response?.data);
-        window.alert(error?.response?.data)
+        window.alert(error?.response?.data);
       });
-
   };
 
   return (
     <>
       <Logo>
-        <img src={logoLabeddit} alt="" />
+        <img src={logoLabeddit} alt="Logo do LabEddit" />
         <p>O projeto de rede social da Labenu</p>
       </Logo>
 
-      <FormContainer onSubmit={login}>
+      <FormContainer onSubmit={login} autoComplete="off">
         <Input
           placeholder="E-mail"
           type="email"
-          id="email"
-          name="email"
+          name={"email"}
           value={form.email}
           onChange={changeForm}
         />
         <Input
           placeholder="Senha"
-          type="password"
-          id="senha"
-          name="password"
+          type={showPassword ? "text" : "password"}
+          name={"password"}
           value={form.password}
           onChange={changeForm}
         />
+
+        <span>
+          <input
+            type="checkbox"
+            value={showPassword}
+            onChange={() => setShowPassword(!showPassword)}
+          />
+          Mostrar Senha
+        </span>
         <BoxButton>
           <Button type="submit">Continuar</Button>
           <Line></Line>
