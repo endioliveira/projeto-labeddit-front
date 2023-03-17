@@ -29,7 +29,7 @@ export const FeedPage = () => {
       <PostsContext.Provider value={context}>
         <CreatePost />
         {context.posts.map((post) => {
-          return <Posts key={post.id} post={post} />;
+          return <Posts key={post.id} post={post} setPosts={setPosts}/>;
         })}
       </PostsContext.Provider>
     </>

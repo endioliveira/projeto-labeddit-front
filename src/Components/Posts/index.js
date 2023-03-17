@@ -1,6 +1,8 @@
-import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { goToPostById } from "../../Router/coordinator";
+import api from "../../services/api";
+
 import {
   Container,
   PostBox,
@@ -12,10 +14,42 @@ import {
   ButtonLikeDislike,
 } from "./PostsStyled";
 
-export const Posts = ({ post }) => {
-
+export const Posts = ({ post, setPost, setPosts }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const params = useParams();
+
+  const like = async (e) => {
+    e.preventDefault();
+
+    const body = {
+      like: true,
+    };
+
+    await api.put(`/posts/${post.id}/like`, body).then(() => {
+      if (params.id) {
+        api
+          .get(`/posts/${post.id}`)
+          .then((response) => {
+            setPost(response.data);
+          })
+          .catch((error) => {
+            console.error(error?.response?.data);
+            window.alert(error?.response?.data);
+          });
+      } else {
+        api
+          .get("/posts")
+          .then((response) => {
+            setPosts(response.data);
+          })
+          .catch((error) => {
+            console.error(error?.response?.data);
+            window.alert(error?.response?.data);
+          });
+      }
+    });
+  };
 
   return (
     <Container>
@@ -27,7 +61,7 @@ export const Posts = ({ post }) => {
 
         <BoxButton>
           <ButtonLikeDislike>
-            <Like>
+            <Like onClick={like}>
               <svg
                 width="15"
                 height="17"
@@ -57,40 +91,39 @@ export const Posts = ({ post }) => {
               </svg>
             </Dislike>
           </ButtonLikeDislike>
-          {
-           location.pathname === "/feed" ?
-                    <ButtonComment onClick={() => goToPostById(navigate, post.id)}>
-                       <svg
-              width="16"
-              height="15"
-              viewBox="0 0 16 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M8.11472 10.5859H12.7067C13.543 10.5859 14.2001 9.92041 14.2001 9.12428V2.86161C14.2001 2.06547 13.543 1.40001 12.7067 1.40001H2.62672C1.79046 1.40001 1.13339 2.06547 1.13339 2.86161V9.12428C1.13339 9.92041 1.79046 10.5859 2.62672 10.5859H4.12006V13.5333H4.12286L4.12472 13.5324L8.11566 10.5859H8.11472ZM4.68006 14.2828C4.48137 14.4293 4.23312 14.4919 3.98874 14.4571C3.74437 14.4224 3.52339 14.2931 3.37339 14.0971C3.25314 13.9387 3.18792 13.7453 3.18766 13.5464V11.5192H2.62766C1.28739 11.5192 0.200989 10.4468 0.200989 9.12428V2.86161C0.200056 1.53907 1.28646 0.466675 2.62672 0.466675H12.7067C14.047 0.466675 15.1334 1.53907 15.1334 2.86161V9.12428C15.1334 10.4477 14.047 11.5192 12.7067 11.5192H8.42272L4.67912 14.2828H4.68006Z"
-                fill="#6F6F6F"
-              />
-            </svg>
-                      {post.comments}
-                    </ButtonComment>
-                  
-            :  <ButtonComment>
-                   <svg
-              width="16"
-              height="15"
-              viewBox="0 0 16 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M8.11472 10.5859H12.7067C13.543 10.5859 14.2001 9.92041 14.2001 9.12428V2.86161C14.2001 2.06547 13.543 1.40001 12.7067 1.40001H2.62672C1.79046 1.40001 1.13339 2.06547 1.13339 2.86161V9.12428C1.13339 9.92041 1.79046 10.5859 2.62672 10.5859H4.12006V13.5333H4.12286L4.12472 13.5324L8.11566 10.5859H8.11472ZM4.68006 14.2828C4.48137 14.4293 4.23312 14.4919 3.98874 14.4571C3.74437 14.4224 3.52339 14.2931 3.37339 14.0971C3.25314 13.9387 3.18792 13.7453 3.18766 13.5464V11.5192H2.62766C1.28739 11.5192 0.200989 10.4468 0.200989 9.12428V2.86161C0.200056 1.53907 1.28646 0.466675 2.62672 0.466675H12.7067C14.047 0.466675 15.1334 1.53907 15.1334 2.86161V9.12428C15.1334 10.4477 14.047 11.5192 12.7067 11.5192H8.42272L4.67912 14.2828H4.68006Z"
-                fill="#6F6F6F"
-              />
-            </svg>
-                  {post.comments}
-                </ButtonComment>
-          }
+          {location.pathname === "/feed" ? (
+            <ButtonComment onClick={() => goToPostById(navigate, post.id)}>
+              <svg
+                width="16"
+                height="15"
+                viewBox="0 0 16 15"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.11472 10.5859H12.7067C13.543 10.5859 14.2001 9.92041 14.2001 9.12428V2.86161C14.2001 2.06547 13.543 1.40001 12.7067 1.40001H2.62672C1.79046 1.40001 1.13339 2.06547 1.13339 2.86161V9.12428C1.13339 9.92041 1.79046 10.5859 2.62672 10.5859H4.12006V13.5333H4.12286L4.12472 13.5324L8.11566 10.5859H8.11472ZM4.68006 14.2828C4.48137 14.4293 4.23312 14.4919 3.98874 14.4571C3.74437 14.4224 3.52339 14.2931 3.37339 14.0971C3.25314 13.9387 3.18792 13.7453 3.18766 13.5464V11.5192H2.62766C1.28739 11.5192 0.200989 10.4468 0.200989 9.12428V2.86161C0.200056 1.53907 1.28646 0.466675 2.62672 0.466675H12.7067C14.047 0.466675 15.1334 1.53907 15.1334 2.86161V9.12428C15.1334 10.4477 14.047 11.5192 12.7067 11.5192H8.42272L4.67912 14.2828H4.68006Z"
+                  fill="#6F6F6F"
+                />
+              </svg>
+              {post.comments}
+            </ButtonComment>
+          ) : (
+            <ButtonComment>
+              <svg
+                width="16"
+                height="15"
+                viewBox="0 0 16 15"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.11472 10.5859H12.7067C13.543 10.5859 14.2001 9.92041 14.2001 9.12428V2.86161C14.2001 2.06547 13.543 1.40001 12.7067 1.40001H2.62672C1.79046 1.40001 1.13339 2.06547 1.13339 2.86161V9.12428C1.13339 9.92041 1.79046 10.5859 2.62672 10.5859H4.12006V13.5333H4.12286L4.12472 13.5324L8.11566 10.5859H8.11472ZM4.68006 14.2828C4.48137 14.4293 4.23312 14.4919 3.98874 14.4571C3.74437 14.4224 3.52339 14.2931 3.37339 14.0971C3.25314 13.9387 3.18792 13.7453 3.18766 13.5464V11.5192H2.62766C1.28739 11.5192 0.200989 10.4468 0.200989 9.12428V2.86161C0.200056 1.53907 1.28646 0.466675 2.62672 0.466675H12.7067C14.047 0.466675 15.1334 1.53907 15.1334 2.86161V9.12428C15.1334 10.4477 14.047 11.5192 12.7067 11.5192H8.42272L4.67912 14.2828H4.68006Z"
+                  fill="#6F6F6F"
+                />
+              </svg>
+              {post.comments}
+            </ButtonComment>
+          )}
         </BoxButton>
       </PostBox>
     </Container>

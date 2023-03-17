@@ -34,6 +34,10 @@ export const api = {
         return needAuthApi.post(endpoint, body)
     },
 
+    put(endpoint, body){
+        return needAuthApi.put(endpoint, body)
+    },
+
     get(endpoint){
         return needAuthApi.get(endpoint)
     },

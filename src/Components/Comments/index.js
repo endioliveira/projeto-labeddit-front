@@ -1,4 +1,6 @@
+import api from "../../services/api";
 import React from "react";
+import { useParams } from "react-router-dom";
 import {
   Container,
   BoxComments,
@@ -7,7 +9,30 @@ import {
   Dislike,
 } from "./CommentsStyled";
 
-export const Comments = ({comment}) => {
+export const Comments = ({comment, setPost}) => {
+  const params = useParams()
+
+  const like = async (e) => {
+    e.preventDefault();
+
+    const body = {
+      like: true,
+      commentId: comment.id
+    };
+
+    await api.put(`/posts/${params.id}/comment/like`, body).then(() => {
+        api
+          .get(`/posts/${params.id}`)
+          .then((response) => {
+            setPost(response.data);
+          })
+          .catch((error) => {
+            console.error(error?.response?.data);
+            window.alert(error?.response?.data);
+          });
+    });
+  };
+
   return (
     <>
       <Container>
@@ -17,7 +42,7 @@ export const Comments = ({comment}) => {
             {comment.content}
           </p>
           <LikeOrDislike>
-            <Like>
+            <Like onClick={like}>
               <svg
                 width="15"
                 height="17"
