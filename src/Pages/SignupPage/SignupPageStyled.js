@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  padding: 2rem;
+`;
+
 export const Title = styled.h2`
   margin-top: 1.813rem;
   padding-left: 1.5rem;
@@ -11,7 +15,7 @@ export const Title = styled.h2`
 `;
 
 export const Form = styled.form`
-  margin-top: 6.6875rem;
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -81,4 +85,10 @@ export const Button = styled.button`
     rgba(250, 171, 84, 1) 100%
   );
   color: #ffffff;
+
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.125rem;
+  cursor: pointer;
 `;

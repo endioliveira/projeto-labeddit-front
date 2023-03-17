@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
-  background-color: #ededed;
+
+  @media (min-width: 320px) {
+  background-color: #EDEDED;
   height: 3.125rem;
 
   position: relative;
@@ -43,5 +45,23 @@ export const HeaderContainer = styled.div`
 
   .iconX {
     margin-top: 0.2rem;
+    background-color: none;
+    border: none;
+  }
+
+}
+
+  @media (min-width: 1024px) {
+    display: flex;
+    justify-content: space-between;
+
+    #logo {
+      left: 41rem;
+    }
+
+    #buttonLougout {
+      left: 75rem;
+    }
+
   }
 `;
