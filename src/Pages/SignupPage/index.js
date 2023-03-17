@@ -56,7 +56,6 @@ export const SignupPage = () => {
         <Form onSubmit={signup}>
           <Input
             placeholder="Apelido"
-            title="é preciso que o apelido tenha pelo menos 4 letras"
             id="nickname"
             name="nickname"
             value={form.nickname}
@@ -66,6 +65,7 @@ export const SignupPage = () => {
           <Input
             placeholder="E-mail"
             type="email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             title="envie o email no formato email@email.com"
             id="email"
             name="email"
@@ -76,6 +76,7 @@ export const SignupPage = () => {
           <Input
             placeholder="Senha"
             type="password"
+            pattern="^[a-zA-Z0-9]{6,}$"
             title="essa senha precisa ter no mínimo 6 caracteres"
             id="password"
             name="password"
