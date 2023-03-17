@@ -8,7 +8,7 @@ https://github.com/endioliveira/projeto-labeddit-back
 ## Link para o Figma
 https://www.figma.com/file/Byakv89sjTqI6NG2NRAAKJ/Projeto-Integrador-Labeddit?node-id=0-1&t=eOySxHiSUymT9gEH-0
 
-##Link do Deploy
+## Link do Deploy
 projeto-labeddit-front.vercel.app
 
 ## Tecnologias utilizadas
