@@ -37,7 +37,8 @@ export const LoginPage = () => {
       .login(body)
       .then((response) => {
         window.localStorage.setItem("labeddit-token", response.data.token);
-        goToFeed(navigate);
+        window.location.href = "/feed"
+        // goToFeed(navigate);
       })
       .catch((error) => {
         console.error(error?.response?.data);
