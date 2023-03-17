@@ -1,6 +1,6 @@
 # Projeto Full Stack - LabEddit
 
-Esse é o último projeto do curso de Desenvolvimento Web Full Stack da Labenu, e nesse projeto tive que utilizar todo o conhecimento adquirido em back-end e front-end que tive aqui no curso.
+Esse é o último projeto do curso de Desenvolvimento Web Full Stack da Labenu, e nesse projeto tive que utilizar todo o conhecimento adquirido em back-end e front-end que tive no curso.
 
 ## Link para o repositório do Back End
 https://github.com/endioliveira/projeto-labeddit-back
