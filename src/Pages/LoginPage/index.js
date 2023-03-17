@@ -5,6 +5,7 @@ import { goToFeed, goToSignup } from "../../Router/coordinator";
 import api from "../../services/api";
 import logoLabeddit from "../../assets/logo-labeddit.svg";
 import {
+  Container,
   Logo,
   FormContainer,
   Input,
@@ -45,7 +46,7 @@ export const LoginPage = () => {
   };
 
   return (
-    <>
+    <Container>
       <Logo>
         <img src={logoLabeddit} alt="Logo do LabEddit" />
         <p>O projeto de rede social da Labenu</p>
@@ -84,6 +85,6 @@ export const LoginPage = () => {
           </ButtonSignup>
         </BoxButton>
       </FormContainer>
-    </>
+    </Container>
   );
 };

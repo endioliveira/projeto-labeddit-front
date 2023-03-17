@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+padding: 2rem;
+`
+
 export const Logo = styled.div`
-  margin-top: 40%;
+  /* margin-top: 2%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,7 +19,7 @@ export const Logo = styled.div`
 `;
 
 export const FormContainer = styled.form`
-  margin-top: 6.6875rem;
+  margin-top: 5rem;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -48,7 +52,7 @@ export const Input = styled.input`
 `;
 
 export const BoxButton = styled.div`
-  margin-top: 3.5rem;
+  margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -71,6 +75,8 @@ export const Button = styled.button`
   font-style: normal;
   font-weight: 700;
   font-size: 1.125rem;
+  cursor: pointer;
+
 `;
 
 export const ButtonSignup = styled.button`
@@ -84,6 +90,8 @@ export const ButtonSignup = styled.button`
   font-style: normal;
   font-weight: 700;
   font-size: 1.125rem;
+  cursor: pointer;
+
 `;
 
 export const Line = styled.div`

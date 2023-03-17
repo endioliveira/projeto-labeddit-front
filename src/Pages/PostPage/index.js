@@ -4,6 +4,7 @@ import api from "../../services/api";
 import { PostsContext } from "../../context/PostsContext";
 import { Comments, CreateComment, Header } from "../../Components";
 import { Posts } from "../../Components/Posts";
+import { ContainerPostPage } from "./PostPageStyled"
 
 export const PostPage = () => {
   const pathParams = useParams();
@@ -30,6 +31,7 @@ export const PostPage = () => {
   return (
     <>
       <Header />
+      <ContainerPostPage>
       <PostsContext.Provider value={context}>
         <Posts post={context.post} setPost={setPost}/>
         <CreateComment />
@@ -39,6 +41,7 @@ export const PostPage = () => {
         }) : <p>carregando</p>} 
         
       </PostsContext.Provider>
+      </ContainerPostPage>
     </>
   );
 };
