@@ -9,6 +9,11 @@ export const Header = () => {
   const location = useLocation();
   const params = useParams();
 
+  const logout = () => {
+    window.localStorage.removeItem('labeddit-token');
+    goToLogin(navigate)
+  }
+
 
   const renderingTheHeader = () => {
     if (location.pathname === "/signup") {
@@ -22,7 +27,7 @@ export const Header = () => {
       return (
         <>
           <img id="logo" src={icone} alt="Logo do Labeddit" />
-          <button id="buttonLougout" onClick={() => goToLogin(navigate)}>Logout</button>
+          <button id="buttonLougout" onClick={logout}>Logout</button>
         </>
       );
     } else if (location.pathname === `/feed/post/${params.id}`) {
@@ -32,7 +37,7 @@ export const Header = () => {
           <img src={iconClose} alt="Botão para fechar a página" />
           </button>
           <img src={icone} alt="Logo do Labeddit" />
-          <button onClick={() => goToLogin(navigate)}>Logout</button>
+          <button onClick={logout}>Logout</button>
         </>
       );
     }

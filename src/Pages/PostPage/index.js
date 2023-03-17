@@ -31,11 +31,11 @@ export const PostPage = () => {
     <>
       <Header />
       <PostsContext.Provider value={context}>
-        <Posts post={context.post} />
+        <Posts post={context.post} setPost={setPost}/>
         <CreateComment />
         
         {context.post.post_comments ? post.post_comments.map((comment)=>{
-          return <Comments key={comment.id} comment={comment}/>
+          return <Comments key={comment.id} comment={comment} setPost={setPost}/>
         }) : <p>carregando</p>} 
         
       </PostsContext.Provider>
